@@ -99,17 +99,17 @@
         <!--GlassFish is an open-source application server project started by
          Sun Microsystems for the Java EE platform
           and now sponsored by Oracle Corporation.-->
-        <!--<dependency>-->
-            <!--<groupId>org.glassfish.web</groupId>-->
-            <!--<artifactId>jstl-impl</artifactId>-->
-            <!--<version>1.2</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>javax.servlet</groupId>-->
-                    <!--<artifactId>servlet-api</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jstl-impl</artifactId>
+            <version>1.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <!-- Jackson JSON Processor -->
         <!--<dependency>-->
@@ -155,6 +155,11 @@
             <artifactId>commons-io</artifactId>
             <version>2.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.1</version>
+        </dependency>
 
         <!-- Security (used for CSRF protection only) -->
         <!--<dependency>-->
@@ -175,6 +180,11 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160810</version>
         </dependency>
         <!--<dependency>-->
             <!--<groupId>xmlunit</groupId>-->
