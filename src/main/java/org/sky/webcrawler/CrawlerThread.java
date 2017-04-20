@@ -1,18 +1,19 @@
 package org.sky.webcrawler;
 
 import java.util.Map;
+import java.util.concurrent.Callable;
 
 
-public abstract class CrawlerThread implements Runnable{
+public abstract class CrawlerThread implements Callable<String>{
 	
 	//task info
 	Map<String,Object> taskInfo;
 	
 	//the handle of thread
 	String handle;
-	
-	@Override
-	public final void run() {
+
+
+	public final String call() {
 		try{
 			cralwer();
 		}
@@ -21,6 +22,7 @@ public abstract class CrawlerThread implements Runnable{
 			clean();
 		}
 		finish();
+		return "OK";
 	}
 
 	public Map<String, Object> getTaskInfo() {

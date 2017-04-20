@@ -15,6 +15,14 @@
 <script>
 	function refresh(){
 		xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				alert("刷新成功");
+				window.location.reload();
+			}
+		}
 		xmlhttp.open("GET","./refresh",true);
 		xmlhttp.send();
 	}

@@ -17,7 +17,7 @@ public class AppContext {
         for (int i = 600000; i < 600999; i++){
             stockCrawler xx = new stockCrawler();
             xx.id = i+"";
-            String id = crawler.runCrawler(xx, null);
+            crawler.runCrawler(xx, null);
         }
     };
 

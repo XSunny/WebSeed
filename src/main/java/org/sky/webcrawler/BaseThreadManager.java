@@ -1,6 +1,8 @@
 package org.sky.webcrawler;
 
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
 
 
 /*
@@ -23,7 +25,7 @@ public class BaseThreadManager {
 	 * @param target
 	 * @return
 	 */
-	public String runCrawler(CrawlerThread target){
+	public FutureTask runCrawler(CrawlerThread target){
 		return runCrawler(target, null);
 	}
 	
@@ -34,19 +36,20 @@ public class BaseThreadManager {
 	 * @param name
 	 * @return
 	 */
-	public String runCrawler(CrawlerThread target ,String name){
+	public FutureTask runCrawler(CrawlerThread target ,String name){
 		String threadName = name;
 		if(threadName == null){
 			//set default name
 			threadName = getDefaultName(target);
 		}
-		Thread t = new Thread(target);
+		FutureTask<String> future= new FutureTask<String>(target);
+		Thread t = new Thread(future);
 		String id = UUID.randomUUID().toString();
 		t.start();
 		threadQueue.put(id, t);
 		crawlerQueue.put(id, target);
 		target.setHandle(id);
-		return id;
+		return future;
 	}
 	
 	/**
@@ -121,7 +124,7 @@ public class BaseThreadManager {
 	 * @param target
 	 * @return
 	 */
-	private String getDefaultName(Runnable target) {
+	private String getDefaultName(Callable target) {
 		return target.toString();
 	}
 
@@ -131,20 +134,19 @@ public class BaseThreadManager {
 		System.out.println("main start");
 		BaseThreadManager crawler = new BaseThreadManager();
 		XXXThread xx = new XXXThread();
-		String id = crawler.runCrawler(xx, null);	
-		System.out.println(crawler.getCrawlerStatus(id));
-		try {
-			
-			crawler.getThread(id).join(3000);
-			System.out.println("now I want to stop the thread!");
-			crawler.stopCrawler(id);	
-			System.out.println(crawler.getCrawlerStatus(id));
-			crawler.getThread(id).join();
-			System.out.println(crawler.getCrawlerStatus(id));
-			System.out.println("main end");
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		FutureTask id = crawler.runCrawler(xx, null);
+//		try {
+//
+//			crawler.getThread(id).join(3000);
+//			System.out.println("now I want to stop the thread!");
+//			crawler.stopCrawler(id);
+//			System.out.println(crawler.getCrawlerStatus(id));
+//			crawler.getThread(id).join();
+//			System.out.println(crawler.getCrawlerStatus(id));
+//			System.out.println("main end");
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 		
 	}
 	

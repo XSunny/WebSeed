@@ -90,8 +90,8 @@ public class stockCrawler extends CrawlerThread {
     }
 
     public static  void  main(String []agrs){
-        stockCrawler stock = new stockCrawler();
-        Thread t = new Thread(stock);
-        t.start();
+//        stockCrawler stock = new stockCrawler();
+//        Thread t = new Thread(stock);
+//        t.start();
     }
 }

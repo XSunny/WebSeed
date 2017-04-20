@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 @Controller
 @RequestMapping("/simple")
@@ -25,10 +29,22 @@ public class SimpleController {
 	@RequestMapping("/refresh")
 	public  @ResponseBody String refresh(Model model) {
 		BaseThreadManager crawler = new BaseThreadManager();
+		List<FutureTask> results = new ArrayList<>();
 		for (int i = 600000; i < 600999; i++){
 			stockCrawler xx = new stockCrawler();
 			xx.id = i+"";
-			String id = crawler.runCrawler(xx, null);
+			FutureTask id = crawler.runCrawler(xx, null);
+			results.add(id);
+
+		}
+		for (FutureTask future: results) {
+			try {
+				future.get();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
 		}
 		return "OK";
 	}
