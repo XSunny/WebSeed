@@ -1,11 +1,10 @@
 package org.sky.webcrawler.util;
 
 import org.sky.webcrawler.BaseThreadManager;
-import org.sky.webseed.webcrawler.stockCrawler;
+import org.sky.webcrawler.stockCrawler;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by Administrator on 2017/4/19.

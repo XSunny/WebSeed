@@ -1,4 +1,4 @@
-package org.sky.webseed.webcrawler;
+package org.sky.webcrawler;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

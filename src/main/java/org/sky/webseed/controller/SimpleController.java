@@ -3,16 +3,14 @@ package org.sky.webseed.controller;
 
 import org.sky.webcrawler.BaseThreadManager;
 import org.sky.webcrawler.util.AppContext;
-import org.sky.webseed.webcrawler.stockCrawler;
+import org.sky.webcrawler.stockCrawler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
