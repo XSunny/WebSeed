@@ -2,15 +2,14 @@ package org.sky.webcrawler.util;
 
 import com.mongodb.*;
 
-import java.net.UnknownHostException;
 import java.util.*;
 
 public class MongoClient {
 	
 	int port = 27017;
-	String DBName = "CDSPDevDB";
-	String CollectionName = "weiboUser";
-	String hostAdd = "121.40.62.73";
+	String DBName = "webData";
+	String CollectionName = "stock";
+	String hostAdd = "locahost";
 
 	private Mongo mongoClient = null;
 	DBCollection coll;
