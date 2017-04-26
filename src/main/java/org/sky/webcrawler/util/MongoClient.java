@@ -148,6 +148,10 @@ public class MongoClient {
 		return set;
 	}
 
+	public void saveObject(){
+
+	}
+
 	public Set<String> getDataSet(BasicDBObject query, String colName, int offset, int limit) {
 		Set<String> set = new HashSet<String>();
 		DBCursor cursor = coll.find(query);
